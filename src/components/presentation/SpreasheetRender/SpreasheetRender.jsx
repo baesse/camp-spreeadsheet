@@ -24,10 +24,12 @@ const SpreasheetRender = ({
       <Column key={colIndex}>
         <BoxCelHeader first={colIndex === 0}>
           <CelTextInput
-            onChange={(e) => spreadsheetUpdateColumnAttributes({
-              col: colIndex,
-              colName: e.target.value,
-            })}
+            onChange={e =>
+              spreadsheetUpdateColumnAttributes({
+                col: colIndex,
+                colName: e.target.value,
+              })
+            }
             column
             value={column.colName}
           />
@@ -42,12 +44,14 @@ const SpreasheetRender = ({
                       <PositionColumn>{rowIndex + 1}</PositionColumn>
                     )}
                     <CelTextInput
-                      onChange={(e) => spreadsheetUpdateValue({
-                        row: rowIndex,
-                        col: colIndex,
-                        value: e.target.value,
-                      })}
-                      onBlur={(e) => {
+                      onChange={e =>
+                        spreadsheetUpdateValue({
+                          row: rowIndex,
+                          col: colIndex,
+                          value: e.target.value,
+                        })
+                      }
+                      onBlur={e => {
                         if (!rowItem.value && column.colRequired) {
                           spreadsheetUpdateValue({
                             row: rowIndex,
@@ -71,12 +75,14 @@ const SpreasheetRender = ({
                       <PositionColumn>{rowIndex + 1}</PositionColumn>
                     )}
                     <CelTextInput
-                      onChange={(e) => spreadsheetUpdateValue({
-                        row: rowIndex,
-                        col: colIndex,
-                        value: e.target.value,
-                      })}
-                      onBlur={(e) => {
+                      onChange={e =>
+                        spreadsheetUpdateValue({
+                          row: rowIndex,
+                          col: colIndex,
+                          value: e.target.value,
+                        })
+                      }
+                      onBlur={e => {
                         if (!rowItem.value && column.colRequired) {
                           spreadsheetUpdateValue({
                             row: rowIndex,
@@ -101,12 +107,14 @@ const SpreasheetRender = ({
                       <PositionColumn>{rowIndex + 1}</PositionColumn>
                     )}
                     <CelTextInput
-                      onChange={(e) => spreadsheetUpdateValue({
-                        row: rowIndex,
-                        col: colIndex,
-                        value: e.target.value,
-                      })}
-                      onBlur={(e) => {
+                      onChange={e =>
+                        spreadsheetUpdateValue({
+                          row: rowIndex,
+                          col: colIndex,
+                          value: e.target.value,
+                        })
+                      }
+                      onBlur={e => {
                         if (!rowItem.value && column.colRequired) {
                           spreadsheetUpdateValue({
                             row: rowIndex,
@@ -131,11 +139,11 @@ const SpreasheetRender = ({
                       <PositionColumn>{rowIndex + 1}</PositionColumn>
                     )}
                     <Select
-                      options={column.colSelectOptions.map((e) => ({
+                      options={column.colSelectOptions.map(e => ({
                         value: e,
                         label: e,
                       }))}
-                      onBlur={(e) => {
+                      onBlur={e => {
                         if (!rowItem.value && column.colRequired) {
                           spreadsheetUpdateValue({
                             row: rowIndex,
@@ -145,11 +153,13 @@ const SpreasheetRender = ({
                           });
                         }
                       }}
-                      onChange={(e) => spreadsheetUpdateValue({
-                        row: rowIndex,
-                        col: colIndex,
-                        value: { value: e.value },
-                      })}
+                      onChange={e =>
+                        spreadsheetUpdateValue({
+                          row: rowIndex,
+                          col: colIndex,
+                          value: { value: e.value },
+                        })
+                      }
                       required={
                         column.colRequired && !rowItem.valid && !rowItem.value
                       }
@@ -163,8 +173,7 @@ const SpreasheetRender = ({
           })}
           <ButtoNewRow
             onClick={() => addTenRowsToColumn({ col: colIndex })}
-            first={colIndex === 0}
-          >
+            first={colIndex === 0}>
             <FormattedMessage id="newRow" />
           </ButtoNewRow>
         </BoxRows>
